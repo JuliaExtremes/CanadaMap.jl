@@ -2,6 +2,15 @@
 
 [![Build Status](https://github.com/JuliaExtremes/CanadaMap.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/JuliaExtremes/CanadaMap.jl/actions/workflows/CI.yml?query=branch%3Amain)
 
+## Installation
+
+This is an unregistered package. It could be installed using the GitHub repo as follows:
+
+```julia
+import Pkg
+Pkg.add(url="https://github.com/JuliaExtremes/CanadaMap.jl")
+```
+
 ## Example - Map of Canada showing the location of Montréal
 
 ```julia

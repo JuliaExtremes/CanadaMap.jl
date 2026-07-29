@@ -28,7 +28,9 @@ function generate_canada_map()
         fig_can[1, 1];
         source = "+proj=longlat +datum=WGS84",
         dest = "+proj=ortho +lon_0=$(can_centroid[1]) +lat_0=$(can_centroid[2])",
-        limits = ((-130, -57), (42, 78))
+        limits = ((-130, -57), (42, 78)),
+        xticks = -160:10:-30,
+        yticks = [35, 40, 45, 49, 55, 60, 65, 70, 75, 80, 85]
     )
 
     # Ocean background
@@ -40,7 +42,7 @@ function generate_canada_map()
     poly!(
         ga,
         df_usa.geom;
-        color = :mintcream,
+        color = :ivory,
         strokecolor = :gray47,
         strokewidth = 0.7,
         shading = NoShading
@@ -49,7 +51,7 @@ function generate_canada_map()
     poly!(
         ga,
         df_grl.geom;
-        color = :mintcream,
+        color = :ivory,
         strokecolor = :gray47,
         strokewidth = 0.7,
         shading = NoShading
@@ -59,7 +61,7 @@ function generate_canada_map()
     poly!(
         ga,
         df_can.geom;
-        color = :ivory,
+        color = :mintcream,
         strokecolor = :gray47,
         strokewidth = 0.7,
         shading = NoShading
@@ -94,6 +96,8 @@ function generate_quebec_map()
     isnothing(quebec_index) &&
         error("Québec was not found in the GADM data.")
 
+    df_quebec = df_can[quebec_index,:]
+
     quebec_geom = df_can.geom[quebec_index]
     quebec_extent = GI.extent(quebec_geom)
     quebec_centroid = GO.centroid(quebec_geom)
@@ -116,7 +120,9 @@ function generate_quebec_map()
         fig[1, 1];
         source="+proj=longlat +datum=WGS84",
         dest="+proj=ortho +lon_0=$(quebec_centroid[1]) +lat_0=$(quebec_centroid[2])",
-        limits=((-82, -55), (44, 63.5))
+        limits=((-82, -55), (44, 63.5)),
+        xticks = -90:5:-45,
+        yticks = 40:5:65
     )
 
     # Ocean background
@@ -128,7 +134,7 @@ function generate_quebec_map()
     poly!(
         ga,
         df_usa.geom;
-        color=:mintcream,
+        color=:ivory,
         strokecolor=:gray47,
         strokewidth=0.7,
         shading=NoShading
@@ -137,6 +143,15 @@ function generate_quebec_map()
     poly!(
         ga,
         df_can.geom;
+        color=:ivory,
+        strokecolor=:gray47,
+        strokewidth=0.7,
+        shading=NoShading
+    )
+
+    poly!(
+        ga,
+        df_quebec.geom;
         color=:mintcream,
         strokecolor=:gray47,
         strokewidth=0.7,

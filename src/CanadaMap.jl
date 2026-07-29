@@ -10,6 +10,6 @@ import GeoInterface as GI
 include("data.jl")
 include("maps.jl")
 
-export generate_canada_map
+export generate_canada_map, generate_quebec_map
 
 end
