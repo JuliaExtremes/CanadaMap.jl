@@ -27,9 +27,7 @@ function generate_canada_map()
     ga = GeoAxis(
         fig_can[1, 1];
         source = "+proj=longlat +datum=WGS84",
-        dest = "+proj=ortho " *
-               "+lon_0=$(can_centroid[1]) " *
-               "+lat_0=$(can_centroid[2])",
+        dest = "+proj=ortho +lon_0=$(can_centroid[1]) +lat_0=$(can_centroid[2])",
         limits = ((-130, -57), (42, 78))
     )
 
